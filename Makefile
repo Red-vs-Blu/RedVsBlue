@@ -1,20 +1,15 @@
 all: update
 
+NETWORK_NAME := ganache
+
 update: migrate
-	cp build/contracts/RedVsBlue.json ./site/src/contract/RedVsBlueABI.json
+	cp build/contracts/RedVsBlue.json ../Red-vs-Blu.github.io/src/contract/RedVsBlueABI.json
 
 migrate: clean
-	truffle migrate
+	truffle migrate --reset --network $(NETWORK_NAME)
 
 clean:
 	rm -rf build/contracts
-
-deps:
-	npm install
-	$(MAKE) -C site deps
-
-serve:
-	$(MAKE) -C site serve
 
 test:
 	truffle test

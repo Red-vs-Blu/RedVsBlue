@@ -1,1 +1,3 @@
+truffle-*.js
+node_modules/
 build/
